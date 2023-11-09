@@ -68,9 +68,10 @@ def republic_solve(F, T, sigma):
     Xinv[K:,K:] = bottomright
     #Check if the matrix is ill conditioned
     cond_number = np.linalg.cond(Xinv)
-    #Let's assume the matrix is ill-conditioned if the condition number is larger than 10^7
-    if cond_number > 1e7:
+    #Let's assume the matrix is ill-conditioned if the condition number is larger than 10^10
+    if cond_number > 1e10:
         print("LARGE MATRIX CONDITION NUMBER {}!".format(cond_number))
+        print("RISK OF REPUBLIC FAILING!!".format(cond_number))
     p = np.dot(Xinv,y)
     J, K, N = T.shape
     a = p[:K]
